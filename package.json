@@ -5,6 +5,9 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@koa/cors": "^3.0.0",
+    "co": "^4.6.0",
+    "fs": "0.0.1-security",
     "gatsby": "^2.15.29",
     "gatsby-image": "^2.2.24",
     "gatsby-plugin-manifest": "^2.2.20",
@@ -18,10 +21,14 @@
     "gatsby-source-meetup": "^1.0.0",
     "gatsby-source-pg": "^0.1.4",
     "gatsby-transformer-sharp": "^2.2.20",
+    "koa-bodyparser": "^4.2.1",
+    "koa-mount": "^4.0.0",
+    "koa-router": "^7.4.0",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
