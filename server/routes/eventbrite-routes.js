@@ -2,7 +2,7 @@ const Router = require( "koa-router" )
 const eventHelper = require( "../api/evnets" )
 const ticketHelper = require( "../api/tickets" )
 const { api } = require( "../api/api" )
-const config = require( "../config/config" )
+const config = require( "../../config/config" )
 const TBC_ORG_ID = config.eventbrite.parentOrg
 
 const event = new Router( {

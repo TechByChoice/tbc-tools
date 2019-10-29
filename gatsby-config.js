@@ -1,5 +1,6 @@
+const config = require("./config/config")
 let activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+  process.env.GATSBY_ACTIVE_ENV || config.oath || "development"
 console.log(`Using environment config: '${activeEnv}'`)
 require("dotenv").config({
   path: `${activeEnv}.env`,
@@ -109,21 +110,11 @@ module.exports = {
         page: 10
       },
     },
-    // {
-    //   resolve: `@jmusial/gatsby-source-eventbrite`,
-    //   options: {
-    //     // token: `18689670264`,
-    //     organizations: {}
-    //     token: `JB4MQSMFZ3WL33JUGXXK`,
-    //     // OPTIONAL: Defaults are Events and Venues
-    //     // entities: ['events', 'venues']
-    //   },
-    // },
     {
       resolve: `gatsby-source-eventbrite`,
       options: {
-        organizationId: `291073217076`,
-        accessToken: `R6HPBSM7SXLPPVIAXHI4`,
+        organizationId: config.parentOrg,
+        accessToken: config.oath,
         // OPTIONAL: Defaults are Events and Venues
         entity: ['events']
       },
