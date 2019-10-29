@@ -1,3 +1,4 @@
+const { api } = require( "../api/api" )
 const moment = require( "moment" )
 
 const createEventData = eventData => {
@@ -31,23 +32,21 @@ const createEventDetailData = eventData => {
   }
 }
 const createEventDescription = eventData => {
-  return `
+  const data = `
     
-      <h3>${ eventData.title }</h3>
-       ${ eventData.description }
+      ${ eventData.title }
+      ${ eventData.description }
 
+       About Tech By Choice
+       Tech By Choice is on a mission to increase the diversity within the STEAM (Science, Technology, Engineering, Art, Math) industry by offering low-to-no cost events, workshops and classes to anyone that identifies as a person of color, women, LGTBQ+, differently abled, or those aligned with the space we're creating.
        
-       <br/>
-       <h4>About Tech By Choice</h4>
-       <p>Tech By Choice is on a mission to increase the diversity within the STEAM (Science, Technology, Engineering, Art, Math) industry by offering low-to-no cost events, workshops and classes to anyone that identifies as a person of color, women, LGTBQ+, differently abled, or those aligned with the space we're creating.</p>
-       <br/>
-       <p>All attendees are expected to abide by 
-        <a href='https://www.techbychoice.org/coc/'>Tech By Choice Code of Conduct</a>
-       </p>
-        <br/>
-        <strong>This event is catered for protected groups, though all are welcome.</strong> 
+       All attendees are expected to abide by Tech By Choice Code of Conduct
+       
+       This event is catered for protected groups, though all are welcome. 
     
   `
+  console.log(data);
+  return data;
 }
 
 function getDescription( title, description ) {
@@ -84,6 +83,9 @@ function getGuestDescription( { title, speakers } ) {
   ` ).map( emojiStrip ).join( "" )
 }
 
+const publishEvent = async eventData => {
+
+}
 module.exports = {
   createEventData,
   createEventDetailData,
