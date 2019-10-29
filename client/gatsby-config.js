@@ -1,4 +1,4 @@
-const config = require("./config/config")
+const config = require("../config/config")
 let activeEnv =
   process.env.GATSBY_ACTIVE_ENV || config.oath || "development"
 console.log(`Using environment config: '${activeEnv}'`)
@@ -113,10 +113,10 @@ module.exports = {
     {
       resolve: `gatsby-source-eventbrite`,
       options: {
-        organizationId: config.parentOrg,
-        accessToken: config.oath,
+        organizationId: config.eventbrite.parentOrg,
+        accessToken: config.eventbrite.oath,
         // OPTIONAL: Defaults are Events and Venues
-        entity: ['events']
+        entity: ['events', 'venues']
       },
     },
   ],
