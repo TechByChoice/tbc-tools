@@ -1,6 +1,6 @@
 const config = require("../config/config")
 let activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || config.oath || "development"
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 console.log(`Using environment config: '${activeEnv}'`)
 require("dotenv").config({
   path: `${activeEnv}.env`,
@@ -57,25 +57,6 @@ module.exports = {
           }
         ],
         queryName: 'testing'
-        // tableView: `YOUR_AIRTABLE_VIEW_NAME`, // optional
-        // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE` // optional
-        // multiple tables
-        // tables: [
-        //   {
-        //     baseId: `YOUR_AIRTABLE_BASE_ID`,
-        //     tableName: `YOUR_TABLE_NAME`,
-        //     tableView: `YOUR_TABLE_VIEW_NAME`, // optional
-        //     queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
-        //     tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional
-        //   },
-        //   {
-        //     baseId: `YOUR_AIRTABLE_BASE_ID`,
-        //     tableName: `YOUR_TABLE_NAME`,
-        //     tableView: `YOUR_TABLE_VIEW_NAME`, // optional
-        //     queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
-        //     tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional
-        //   }
-        // ]
       }
     },
     {
@@ -119,5 +100,31 @@ module.exports = {
         entity: ['events', 'venues']
       },
     },
+    {
+      resolve: "gatsby-theme-auth0-ts",
+      options: {
+        /*
+         Required: for more information on these values
+         see https://auth0.com/docs/libraries/auth0js/v9#initialization
+         */
+        auth0Domain: process.env.AUTH0_DOMAIN,
+        auth0ClientID: process.env.AUTH0_CLIENT_ID,
+        auth0RedirectUri: process.env.AUTH0_CALLBACK_URL,
+
+        /* Optional */
+        // auth0Audience: undefined,
+        // auth0ResponseType: "token id_token",
+        // auth0Scope: "openid profile",
+      },
+    }
+    // {
+    //   resolve: "gatsby-source-custom-api",
+    //   options: {
+    //     url: {
+    //       development: "http://localhost:3007", // on "gatsby develop"
+    //       production: "https://my-remote-api.com" // on "gatsby build"
+    //     }
+    //   }
+    // }
   ],
 }
